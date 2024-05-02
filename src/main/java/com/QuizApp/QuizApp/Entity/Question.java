@@ -36,4 +36,7 @@ public class Question {
 
     @Column(name = "difficulty_level")
     private String difficultyLevel;
+
+    @Column(name="category")
+    private String category;
 }

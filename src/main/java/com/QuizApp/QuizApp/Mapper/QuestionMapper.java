@@ -17,7 +17,8 @@ public class QuestionMapper {
                 question.getOption3(),
                 question.getOption4(),
                 question.getRightAnswer(),
-                question.getDifficultyLevel()
+                question.getDifficultyLevel(),
+                question.getCategory()
         );
     }
 
@@ -30,7 +31,8 @@ public class QuestionMapper {
                 question.getOption3(),
                 question.getOption4(),
                 question.getRightAnswer(),
-                question.getDifficultyLevel()
+                question.getDifficultyLevel(),
+                question.getCategory()
         );
     }
 

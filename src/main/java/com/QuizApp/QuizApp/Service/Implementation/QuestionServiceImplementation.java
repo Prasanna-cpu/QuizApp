@@ -33,4 +33,17 @@ public class QuestionServiceImplementation implements QuestionService {
 
         return questions.stream().map(QuestionMapper::mapToQuestionDTO).collect(Collectors.toList());
     }
+
+    @Override
+    public List<QuestionDTO> getQuestionByCategory(String category) {
+        return questionRepository.findByCategory(category);
+    }
+
+    @Override
+    public QuestionDTO addQuestion(QuestionDTO questionDto) {
+        Question question=QuestionMapper.mapToQuestion(questionDto);
+        return QuestionMapper.mapToQuestionDTO(questionRepository.save(question));
+    }
+
+
 }

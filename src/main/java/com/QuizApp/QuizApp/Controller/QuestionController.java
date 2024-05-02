@@ -1,12 +1,14 @@
 package com.QuizApp.QuizApp.Controller;
 
 
+import com.QuizApp.QuizApp.DTO.QuestionDTO;
 import com.QuizApp.QuizApp.Entity.Question;
+import com.QuizApp.QuizApp.Exceptions.EmptyDataExceptions;
 import com.QuizApp.QuizApp.Service.QuestionService;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
+import org.springframework.web.bind.annotation.*;
 
 import java.util.LinkedList;
 import java.util.List;
@@ -19,7 +21,18 @@ public class QuestionController {
     QuestionService questionService;
 
     @GetMapping()
-    public List<Question> getAllQuestions(){
-        return new LinkedList<>();
+    public List<QuestionDTO> getAllQuestions() throws EmptyDataExceptions {
+        return questionService.getAllQuestions();
+    }
+
+    @GetMapping("category/{category}")
+    public List<QuestionDTO> getQuestionByCategory(@PathVariable String category){
+        return questionService.getQuestionByCategory(category);
+    }
+
+    @PostMapping("/addQuestion")
+    public ResponseEntity<QuestionDTO> addQuestion(@RequestBody QuestionDTO questionDto){
+        QuestionDTO savedQuestion=questionService.addQuestion(questionDto);
+        return new ResponseEntity<QuestionDTO>(savedQuestion, HttpStatus.CREATED);
     }
 }
