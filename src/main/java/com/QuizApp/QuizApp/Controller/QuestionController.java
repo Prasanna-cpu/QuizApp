@@ -21,13 +21,15 @@ public class QuestionController {
     QuestionService questionService;
 
     @GetMapping()
-    public List<QuestionDTO> getAllQuestions() throws EmptyDataExceptions {
-        return questionService.getAllQuestions();
+    public ResponseEntity<List<QuestionDTO>> getAllQuestions() throws EmptyDataExceptions {
+        List<QuestionDTO> savedQuestions=questionService.getAllQuestions();
+        return ResponseEntity.ok(savedQuestions);
     }
 
     @GetMapping("category/{category}")
-    public List<QuestionDTO> getQuestionByCategory(@PathVariable String category){
-        return questionService.getQuestionByCategory(category);
+    public ResponseEntity<List<QuestionDTO>> getQuestionByCategory(@PathVariable String category){
+        List<QuestionDTO> questionsByCategory=questionService.getQuestionByCategory(category);
+        return ResponseEntity.ok(questionsByCategory);
     }
 
     @PostMapping("/addQuestion")
