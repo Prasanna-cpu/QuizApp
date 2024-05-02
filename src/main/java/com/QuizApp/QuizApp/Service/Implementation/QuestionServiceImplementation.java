@@ -8,7 +8,7 @@ import com.QuizApp.QuizApp.Mapper.QuestionMapper;
 import com.QuizApp.QuizApp.Repository.QuestionRepository;
 import com.QuizApp.QuizApp.Service.QuestionService;
 import lombok.AllArgsConstructor;
-import lombok.NoArgsConstructor;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 

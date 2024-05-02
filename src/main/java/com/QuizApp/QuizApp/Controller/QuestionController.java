@@ -2,7 +2,6 @@ package com.QuizApp.QuizApp.Controller;
 
 
 import com.QuizApp.QuizApp.DTO.QuestionDTO;
-import com.QuizApp.QuizApp.Entity.Question;
 import com.QuizApp.QuizApp.Exceptions.EmptyDataExceptions;
 import com.QuizApp.QuizApp.Exceptions.ResourceNotFoundException;
 import com.QuizApp.QuizApp.Service.QuestionService;
@@ -36,14 +35,14 @@ public class QuestionController {
     @PostMapping("addQuestion")
     public ResponseEntity<QuestionDTO> addQuestion(@RequestBody QuestionDTO questionDto){
         QuestionDTO savedQuestion=questionService.addQuestion(questionDto);
-        return new ResponseEntity<QuestionDTO>(savedQuestion, HttpStatus.CREATED);
+        return new ResponseEntity<>(savedQuestion, HttpStatus.CREATED);
     }
 
     @PutMapping("updateQuestion/{id}")
 
     public ResponseEntity<QuestionDTO> updateQuestion(@RequestBody QuestionDTO questionDTO,@PathVariable Integer id) throws ResourceNotFoundException {
         QuestionDTO updatedQuestion=questionService.updateQuestionByID(id, questionDTO);
-        return new ResponseEntity<QuestionDTO>(updatedQuestion, HttpStatus.CREATED);
+        return new ResponseEntity<>(updatedQuestion, HttpStatus.CREATED);
     }
 
     @DeleteMapping("deleteQuestion/{id}")
